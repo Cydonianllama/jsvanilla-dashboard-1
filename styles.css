@@ -3,6 +3,9 @@
     padding: 0;
     box-sizing: border-box;
 }
+main{
+    background-color: #f0f4f7;
+}
 .row-product{
     position: relative;
     display: flex;
@@ -19,13 +22,35 @@
     display: flex;
     gap: 10px;
 }
+.rw-container{
+    user-select: none;
+    font-size: 1rem;
+    font-weight: 600;
+    display: flex;
+    width: max-content;
+    background-color: white;
+}
 .container-row-product-name{
     width: 180px;
     display: block;
 }
+.rw-1{
+    width: 180px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+}
 .container-row-product-type{
     width: 100px;
     display: block;
+}
+.rw-2{
+    width: 100px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
 }
 .row-product-type{
     padding: 3px;
@@ -37,9 +62,30 @@
     width: 80px;
     display: block;
 }
+.rw-3{
+    width: 110px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+}
 .container-row-product-quantity{
     width: 70px;
     display: block;
+}
+.rw-4{
+    width: 110px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px; 
+}
+.rw-5{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    height: 40px;
+    width: 210px;
 }
 .row-products-actions button{
     cursor: pointer;
@@ -65,12 +111,21 @@
 }
 #table-product{
     width: max-content;
+    background-color: white;
+    padding: 15px;
 }
 
-
+#dashboard{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
 .dashboard-actions-container{
     display: flex;
     justify-content: flex-end;
+    background-color: white;
+    padding: 20px;
+    margin-bottom: 1rem;
 }
 .dashboard-actions-container button{
     cursor: pointer;
@@ -101,7 +156,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    z-index: -1;
+    z-index: -5;
 }
 .container-modal-activate{
     z-index: 500 !important;
@@ -113,8 +168,124 @@
     display: none;
 } */
 .modal-open{
-    display: block;
+    height: max-content;
+    transition: all 0.6s ease-in-out ;
+    opacity: 1;
+    z-index: 51 !important;
+    visibility: visible;
+    display: flex !important;
 }
 .modal-close{
-    display: none;
+    transition: all 0.6s ease-in-out ;
+    height: 0;
+    opacity: 0;
+    z-index: 50 !important;
+    background-color: red;
+    visibility: visible;
+}
+
+
+.modal-edit{
+    position: absolute;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 12px;
+    transition: all 0.6s ease-in-out ;
+}
+.modal-edit form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+
+.modal-create-product{
+    background-color: white;
+    padding: 20px;
+    position: absolute;
+    z-index: 50;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.6s ease-in-out ;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+.modal-create-product form{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+#modal div > form > input {
+    font-size: 1.1rem;
+    padding: 10px;
+    border: 1px solid rgb(236, 235, 235);
+}
+#modal div > form > input:focus{
+    outline: 2px solid rgba(134, 255, 35, 0.384);
+}
+#modal div > form > select{
+    font-size: 1.1rem;
+    border: none;
+    padding: 10px;
+}
+#modal div > form > select:focus{
+    outline: 2px solid rgba(134, 255, 35, 0.384);
+}
+#modal div h3{
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
+#modal div > form > button{
+    font-size: 1.1rem;
+    border: 1px solid white;
+    padding: 10px;
+    cursor: pointer;
+}
+
+#btn-create-product{
+    background-color: rgb(44, 238, 132);
+    color: white;
+}
+#btn-create-product:hover{
+    background-color: rgb(17, 199, 99);
+}
+#btn-create-product:focus{
+    border: 1px solid black;
+}
+#btn-create-cancel{
+    background-color: #ffbeb2;
+    color: white;
+}
+#btn-create-cancel:hover{
+    background-color: rgb(245, 112, 88);
+}
+#btn-create-cancel:focus{
+    border: 1px solid black;
+}
+#btn-modal-proccess-edit{
+    background-color: rgb(0, 119, 255);
+    color: white;
+}
+#btn-modal-proccess-edit:focus{
+    border: 1px solid black;
+}
+#btn-modal-proccess-edit:hover{
+    background-color: rgb(12, 95, 190);
+}
+#btn-edit-cancel{
+    background-color: rgb(214, 46, 40);
+    color: white;
+}
+#btn-edit-cancel:hover{
+    background-color: rgb(173, 17, 12);
+}
+#btn-edit-cancel:focus{
+    border: 1px solid black;
 }

@@ -33,6 +33,20 @@ const products = [
         type: 'fruta',
         idSection: 'a06-005',
         quantity: 1500
+    },
+    {
+        id: 'product-6',
+        name: 'maracuya',
+        type: 'fruta',
+        idSection: 'a06-005',
+        quantity: 545
+    },
+    {
+        id: 'product-7',
+        name: 'chirimoya',
+        type: 'fruta',
+        idSection: 'a06-001',
+        quantity: 1220
     }
 ]
 

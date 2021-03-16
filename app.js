@@ -94,7 +94,7 @@ class Hint {
     getTemplate(){
         let div = document.createElement('div')
         let template = `
-            <span>Bibi ti amo</span>
+            <span>Hint still in development</span>
         `
         div.innerHTML = template
         return div
@@ -145,6 +145,11 @@ class ModalEdit {
                 modalContainer.classList.remove('container-modal-activate')
             }
         }
+
+        const removeBlur = () => {
+            const content = document.getElementById('content-dash')
+            content.style.filter = 'blur(0)'
+        }
         
         const btnEdit = document.getElementById('btn-modal-proccess-edit')
         btnEdit.addEventListener('click',(e)=>{
@@ -165,14 +170,16 @@ class ModalEdit {
 
             this.currentComponent.updateComponent(object)
 
+            removeBlur()
             closeModal()
-
             e.preventDefault()
+
         })
 
         const btnCancel = document.getElementById('btn-edit-cancel')
         btnCancel.addEventListener('click',(e)=>{
             closeModal()
+            removeBlur()
             e.preventDefault()
         })
     }
@@ -182,8 +189,7 @@ class ModalEdit {
         div.classList.add('modal-edit')
         div.classList.add('modal-close')
         let template = `
-            <h3>modal edit</h3>
-            <h3>Modal create Product</h3>
+            <h3>Edit product </h3>
             <form id = "form-edit-product" >
                 <input name = "edit-input-product-name" type="text" placeholder="product name" />
                 <select name = "edit-select-type" id="modal-create-select-type">
@@ -200,8 +206,7 @@ class ModalEdit {
                     <option>a06-004</option>
                     <option>a06-005</option>
                 </select>
-                <input name = "edit-quantity" type="number" placeholder="quantity" />
-
+                <input type="number" name = "edit-quantity" placeholder="quantity" />
                 <button type = "button" id="btn-modal-proccess-edit">edit product</button>
                 <button type = "button" id = "btn-edit-cancel" >cancel</button>
             </form>
@@ -248,6 +253,11 @@ class ModalCreateProduct {
             }
         }
 
+        const removeBlur = () =>{
+            const content = document.getElementById('content-dash')
+            content.style.filter = 'blur(0)'
+        }
+
         const resetForm = () => {
             formCreateProduct.reset()
         }
@@ -277,6 +287,7 @@ class ModalCreateProduct {
         const appendRowInTable = () => {
             const container = document.getElementById('table-product')
             let component = new this.componentClass()
+            component.attach(modalEdit)
             component.setData(this.dataCreated)
             component.render(container)
 
@@ -300,6 +311,7 @@ class ModalCreateProduct {
 
             resetForm()
             closeModal()
+            removeBlur()
             appendRowInTable()
 
             e.preventDefault()
@@ -308,6 +320,7 @@ class ModalCreateProduct {
         const btnCancel = document.getElementById('btn-create-cancel')
         btnCancel.addEventListener('click',(e)=>{
             closeModal()
+            removeBlur()
             e.preventDefault()
         })
 
@@ -319,7 +332,7 @@ class ModalCreateProduct {
         div.classList.add('modal-create-product')
         div.classList.add('modal-close')
         let template = `
-            <h3>Modal create Product</h3>
+            <h3>Create Product</h3>
             <form id = "form-create-product" >
                 <input name = "create-input-product-name" type="text" placeholder="product name" />
                 <select name = "create-select-type" id="modal-create-select-type">
@@ -330,9 +343,11 @@ class ModalCreateProduct {
                 </select>
                 <select name = "create-select-section" id="modal-create-select-section">
                     <option>select</option>
-                    <option>a06-101</option>
-                    <option>a06-102</option>
-                    <option>a06-103</option>
+                    <option>a06-001</option>
+                    <option>a06-002</option>
+                    <option>a06-003</option>
+                    <option>a06-004</option>
+                    <option>a06-005</option>
                 </select>
                 <input name = "create-quantity" type="number" placeholder="quantity" />
                 
@@ -384,6 +399,11 @@ class ProductRow {
         let component = this.currentComponent
         const {id} = this.data
 
+        const blur = () => {
+            const content = document.getElementById('content-dash')
+            content.style.filter = 'blur(1px)'
+        }
+
         const btnRemove = component.querySelector('.btn-remove-product')
         btnRemove.addEventListener('click',(e)=>{
             let response = productService.deleteProduct(id)
@@ -403,6 +423,7 @@ class ProductRow {
                 modalContainer.classList.add('container-modal-activate')
             }
 
+            blur()
             this.notify()
 
             e.preventDefault()
@@ -454,16 +475,16 @@ class ProductRow {
         let component = this.currentComponent
         let rowData = component.querySelector('.row-data')
         let newFragment = `
-            <div>
+            <div class="container-row-product-name">
                 <span class="row-product-name">${name}</span>
             </div>
-            <div>
+            <div class="container-row-product-type">
                 <span class="row-product-type">${type}</span>
             </div>
-            <div>
+            <div class="container-row-product-section">
                 <span class="row-product-section">${idSection}</span>
             </div>
-            <div>
+            <div class="container-row-product-quantity">
                 <span class="row-product-quantity">${quantity}</span>
             </div>
         `
@@ -488,7 +509,17 @@ class TableProduct {
 
     getTemplate(){
         let div = document.createElement('div')
-        let template = `<div id = "table-product"></div>`
+        div.classList.add('table-wrapper')
+        let template = `
+            <div class = "rw-container">
+                <div class = "rw-1">name</div>
+                <div class = "rw-2">type</div>
+                <div class = "rw-3">section</div>
+                <div class = "rw-4">quantity</div>
+                <div class = "rw-5">actions</div>
+            </div>
+            <div id = "table-product"></div>
+        `
         div.innerHTML = template
         return div
     }
@@ -539,6 +570,8 @@ class Dashboard {
         
         btnCreate.addEventListener('click',(e)=>{
 
+            const content = document.getElementById('content-dash')
+            content.style.filter = 'blur(1px)'
             const modalContainer = document.getElementById('modal')
             modalContainer.classList.add('container-modal-activate')
             
@@ -558,10 +591,12 @@ class Dashboard {
         let template = `
             <div id = "hint"></div>
             <div id = "modal"></div>
-            <div class = "dashboard-actions-container">
-                <button id = "dashboard-btn-create-product" > create product </button>
+            <div id = "content-dash">
+                <div class = "dashboard-actions-container">
+                    <button id = "dashboard-btn-create-product" > create product </button>
+                </div>
+                <div id = "dashboard"><div>
             </div>
-            <div id = "dashboard"><div>
         `
         div.innerHTML = template
         return div

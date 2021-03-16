@@ -1,0 +1,120 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.row-product{
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    height: 40px;
+    user-select: none;
+    border-bottom: 1px solid rgb(238, 238, 238);
+}
+.row-product:hover{
+    background-color: rgb(240, 240, 240);
+}
+.row-data{
+    display: flex;
+    gap: 10px;
+}
+.container-row-product-name{
+    width: 180px;
+    display: block;
+}
+.container-row-product-type{
+    width: 100px;
+    display: block;
+}
+.row-product-type{
+    padding: 3px;
+    border-radius: 8px;
+    background-color: rgb(16, 190, 74);
+    color: white;
+}
+.container-row-product-section{
+    width: 80px;
+    display: block;
+}
+.container-row-product-quantity{
+    width: 70px;
+    display: block;
+}
+.row-products-actions button{
+    cursor: pointer;
+    outline: none;
+    border: none;
+    width: 80px;
+    height: 25px;
+    border-radius: 4px;
+}
+.btn-remove-product{
+    color: white;
+    background-color: rgba(233, 47, 14, 0.692);
+}
+.btn-remove-product:hover{
+    background-color: rgb(233, 47, 14);
+}
+.btn-edit-product{
+    color: white;
+    background-color: rgb(42, 140, 253);
+}
+.btn-edit-product:hover{
+    background-color: rgb(12, 116, 235);
+}
+#table-product{
+    width: max-content;
+}
+
+
+.dashboard-actions-container{
+    display: flex;
+    justify-content: flex-end;
+}
+.dashboard-actions-container button{
+    cursor: pointer;
+    outline: none;    
+    border: none;
+    height: 35px;
+    width: 110px;
+    border-radius: 4px;
+}
+#dashboard-btn-create-product{
+    background-color: rgb(47, 116, 245);
+    color: white;
+}
+#dashboard-btn-create-product:hover{
+    background-color: rgb(10, 84, 223);
+}
+.dashboard-container{
+    position: relative;
+    width: 100%;
+    height: 100vh;
+}
+#modal{
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: -1;
+}
+.container-modal-activate{
+    z-index: 500 !important;
+}
+#form-create-product{
+    z-index: 4400 !important;
+}
+/* .modal-edit{
+    display: none;
+} */
+.modal-open{
+    display: block;
+}
+.modal-close{
+    display: none;
+}
